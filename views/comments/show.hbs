@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col s12 m8">
+        <div class="card story">
+            <div class="card-content">
+                {{{editIcon comment.user user comment._id true}}}
+                <span class="card-title">{{formatDate date 'MMMM Do YYYY, h:mm:ss a'}}</span>
+                {{{comment.content}}}
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card center-align">
+            <div class="card-content">
+                <span class="card-title">{{comment.user.displayName}}</span>
+                <img src="{{comment.user.image}}" class="circle responsive-img img-small">
+            </div>
+            <div class="card-action">
+                <a href="/comment/user/{{comment.user._id}}">More From {{comment.user.firstName}}</a>
+            </div>
+        </div>
+    </div>
+</div>

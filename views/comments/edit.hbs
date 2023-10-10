@@ -1,0 +1,33 @@
+<h3>Edit Comment</h3>
+<div class="row">
+    <form action="/comments/{{comment._id}}" method="POST" class="col s12">
+
+    <input type="hidden" name="_method" value="PUT">
+    <div class="row">
+        <div class="input-field">
+            <select name="rate" id="rate">
+
+                {{#select comment.rate}}
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                {{/select}}
+            </select>
+            <label for="rate">Rate</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field">
+            <h5>Add Your Comment</h5>
+            <textarea name="content" id="content" cols="30" rows="10" >{{comment.content}}</textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <input type="submit" value="Update" class="btn">
+        <a href="/dashboard" class="btn orange">Cancel</a>
+    </div>
+    </form>
+</div>

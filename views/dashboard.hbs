@@ -1,0 +1,42 @@
+<h6>Dashboard</h6>
+<h4>Welcome {{name}}</h4>
+<p>Here are your comments</p>
+
+{{#if comments}}
+
+<table class="striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Rate</th>
+            <th>Comment</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each comments}}
+            <tr>
+                <td><a href="/comments/{{_id}}">{{{user.displayName}}}</a></td>
+                <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
+                <td>{{rate}}</td>
+                <td>{{stripTags content}}</td>
+                <td>
+                    <a href="/comments/edit/{{_id}}" class="btn btn-float">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="/comments/{{_id}}" method="POST" id="delete-form" class="flex">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn red">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+    <p>You have not created any comments</p>
+
+{{/if}}
