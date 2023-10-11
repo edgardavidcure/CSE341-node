@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-
+const cors = require("cors")
 const dotenv = require("dotenv");
 const { engine } = require("express-handlebars");
 const methodOverride = require("method-override");
@@ -17,9 +17,21 @@ require("./config/passport")(passport);
 connectDB();
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(cors())
+app.use((req, res, next) => {
+  res.setHeader("Access-control-Allow-origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, x-requested-With, Content-Type, Accept, Z-key"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  next();
+})
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === "object" && "_method" in req.body) {
