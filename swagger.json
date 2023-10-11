@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "project4node.onrender.com/",
+  "host": "project4node.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
